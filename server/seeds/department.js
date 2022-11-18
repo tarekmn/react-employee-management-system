@@ -31,18 +31,11 @@ const seedDepartment = [
 ]
 
 const seed = async () => {
-  const queryFirst = await Department.find({})
-  if (queryFirst && queryFirst.length === 0) {
-    console.log("seeding department...")
-
-    const seed = await Promise.all(seedDepartment.map(async (dep) => await Department.create(dep)))
-
-    console.log("seeding done")
-    process.exit()
-  } else {
-    console.log("no seeding needed")
-    process.exit()
-  }
+  const queryFirst = await Department.remove({})
+  console.log("seeding department...")
+  const seed = await Promise.all(seedDepartment.map(async (dep) => await Department.create(dep)))
+  console.log("seeding done")
+  process.exit()
 }
 
 
