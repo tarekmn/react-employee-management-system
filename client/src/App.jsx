@@ -10,13 +10,19 @@ import Navigation from "./components/Navigation"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
+
+
+
   return (
     <AppProvider value={{}}>
       <Navigation />
       <Container>
         <BrowserRouter>
           <Routes>
-
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile/:id?" element={<Profile/>} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </Container>
